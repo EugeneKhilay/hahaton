@@ -23,7 +23,7 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  font-family: 'Bebas';
+  font-family: 'BebasNeueRegular', OpenSans, sans-serif;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -50,16 +50,27 @@ table {
   border-spacing: 0;
 }
 /*================================================ Fonts =============================================================*/
-
 @font-face {
-  font-family: 'Bebas';
-  src: url('../fonts/Bebas.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/Bebas.woff') format('woff'),
-  url('../fonts/Bebas.ttf')  format('truetype'),
-  url('../fonts/Bebas.svg#Bebas') format('svg');
+  font-family: 'BebasNeueBold';
+  src: url('../fonts/BebasNeueBold.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/BebasNeueBold.otf')  format('opentype'),
+       url('../fonts/BebasNeueBold.woff') format('woff'),
+       url('../fonts/BebasNeueBold.ttf')  format('truetype'),
+       url('../fonts/BebasNeueBold.svg#BebasNeueBold') format('svg');
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'BebasNeueRegular';
+  src: url('../fonts/BebasNeueRegular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/BebasNeueRegular.otf')  format('opentype'),
+       url('../fonts/BebasNeueRegular.woff') format('woff'),
+       url('../fonts/BebasNeueRegular.ttf')  format('truetype'),
+       url('../fonts/BebasNeueRegular.svg#BebasNeueRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /*================================================ My styles =========================================================*/
 body {
   background: url('../images/backgr.jpg') center top no-repeat;
@@ -91,10 +102,13 @@ main {
     margin-bottom: 130px;
   }
   .select2-container {
-    line-height: 35px;
     .select2-selection {
       border-radius: 0;
       background-color: #eaeaea;
+      .select2-selection__rendered {
+        padding: 10px 0 10px 50px;
+        background: url('../images/search.png') 15px center no-repeat;
+      }
     }
   }
   .tags-select {
@@ -113,7 +127,9 @@ main {
       text-align: center;
       background-color: #414146;
       .select2-selection__rendered {
+        padding: 10px 0;
         color: #fff;
+        background: none;
       }
     }
   }
