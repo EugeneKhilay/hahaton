@@ -81,10 +81,11 @@ body {
 }
 /*----------------------------------------------- Header -------------------------------------------------------------*/
 header {
-  max-height: 270px;
   .header-logo {
-    padding: 50px 0;
+    margin-top: 75px;
+    padding: 0 0 50px;
     text-align: center;
+    background-color: #414146;
   }
   .main-title {
     text-indent: -9999px;
