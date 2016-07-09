@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="css/select2.min.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="js/knockout-3.4.0.js"></script>
+        <script src="js/custom.js"></script>
+        <script src="js/select2.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="header-logo">
+                    <a href="/">
+                        <img src="images/logo.png" />
+                        <h1 class="main-title">eWorkers</h1>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <div class="filter-wrapper">
+                    <select class="tags-select form-control select2-hidden-accessible" multiple="" tabindex="-1"
+                            aria-hidden="true">
+                        <optgroup label="Caste">
+                            <option value="manager">Manager</option>
+                            <option value="dev">Developer</option>
+                            <option value="design">Desinger</option>
+                        </optgroup>
+                        <optgroup label="Programming Languages">
+                            <option value="php">PHP</option>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                        </optgroup>
+                        <optgroup label="Peoples">
+                            <option value="dima">Dima</option>
+                            <option value="eugene">Eugene</option>
+                            <option value="vitaliy">Vitaliy</option>
+                        </optgroup>
+                    </select>
+                    <div class="select-wrapper">
+                        <select class="single-select">
+                            <option value="AL">Alabama</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                    </div>
+                    <!--<h2>Participants</h2>-->
+                    <!--Here are the participants:-->
+                    <!--<div data-bind="template: { name: 'person-template', foreach: people }"></div>-->
+
+                    <!--<script type="text/html" id="person-template">-->
+                    <!--<h3 data-bind="text: name"></h3>-->
+                    <!--<p>Credits: <span data-bind="text: caste"></span></p>-->
+                    <!--</script>-->
+                </div>
+                <div class="content">
+                    <section class="worker-item">
+                        <div class="img-wrapper">
+                            <img src="images/Pavel.png" />
+                        </div>
+                        <h2 class="section-title">Pavel Voronovsky</h2>
+                        <span class="section-subtitle">Art-Director</span>
+                    </section>
+                    <section class="worker-item">
+                        <div class="img-wrapper">
+                            <img src="images/Pavel.png" />
+                        </div>
+                        <h2 class="section-title">Pavel Voronovsky</h2>
+                        <span class="section-subtitle">Art-Director</span>
+                    </section>
+                    <section class="worker-item">
+                        <div class="img-wrapper">
+                            <img src="images/Pavel.png" />
+                        </div>
+                        <h2 class="section-title">Pavel Voronovsky</h2>
+                        <span class="section-subtitle">Art-Director</span>
+                    </section>
+                    <section class="worker-item">
+                        <div class="img-wrapper">
+                            <img src="images/Pavel.png" />
+                        </div>
+                        <h2 class="section-title">Pavel Voronovsky</h2>
+                        <span class="section-subtitle">Art-Director</span>
+                    </section>
+                    <section class="worker-item">
+                        <div class="img-wrapper">
+                            <img src="images/Pavel.png" />
+                        </div>
+                        <h2 class="section-title">Pavel Voronovsky</h2>
+                        <span class="section-subtitle">Art-Director</span>
+                    </section>
+                    <section class="worker-item">
+                        <div class="img-wrapper">
+                            <img src="images/Pavel.png" />
+                        </div>
+                        <h2 class="section-title">Pavel Voronovsky</h2>
+                        <span class="section-subtitle">Art-Director</span>
+                    </section>
+                    <section class="worker-item">
+                        <div class="img-wrapper">
+                            <img src="images/Pavel.png" />
+                        </div>
+                        <h2 class="section-title">Pavel Voronovsky</h2>
+                        <span class="section-subtitle">Art-Director</span>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

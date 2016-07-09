@@ -1,0 +1,136 @@
+/*================================================ Reset CSS =========================================================*/
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  font-family: 'Bebas';
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*================================================ Fonts =============================================================*/
+
+@font-face {
+  font-family: 'Bebas';
+  src: url('../fonts/Bebas.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Bebas.woff') format('woff'),
+  url('../fonts/Bebas.ttf')  format('truetype'),
+  url('../fonts/Bebas.svg#Bebas') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*================================================ My styles =========================================================*/
+body {
+  background: url('../images/backgr.jpg') center top no-repeat;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1024px;
+}
+/*----------------------------------------------- Header -------------------------------------------------------------*/
+header {
+  max-height: 270px;
+  .header-logo {
+    padding: 50px 0;
+    text-align: center;
+  }
+  .main-title {
+    text-indent: -9999px;
+  }
+}
+/*---------------------------------------------- Content -------------------------------------------------------------*/
+main {
+  margin-bottom: 100px;
+  .container {
+    padding: 70px 100px;
+    background-color: #fff;
+  }
+  .filter-wrapper {
+    position: relative;
+    margin-bottom: 130px;
+  }
+  .select2-container {
+    line-height: 35px;
+    .select2-selection {
+      border-radius: 0;
+      background-color: #eaeaea;
+    }
+  }
+  .tags-select {
+    min-width: 70%;
+  }
+  .select-wrapper {
+    display: inline-block;
+    padding-left: 40px;
+    box-sizing: border-box;
+    width: calc(30% - 5px);
+    .single-select {
+      width: 100%;
+    }
+    .select2-selection {
+      height: 50px;
+      text-align: center;
+      background-color: #414146;
+      .select2-selection__rendered {
+        color: #fff;
+      }
+    }
+  }
+  .content {
+    margin-left: -5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .worker-item {
+      margin-bottom: 55px;
+      padding-left: 5%;
+      width: 20%;
+    }
+    .img-wrapper {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
