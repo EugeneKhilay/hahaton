@@ -7,6 +7,7 @@
         <link href="css/styles.css" rel="stylesheet" />
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="js/knockout-3.4.0.js"></script>
+        <script src="js/base.js"></script>
         <script src="js/findermodel.js"></script>
         <script src="js/custom.js"></script>
         <script src="js/select2.min.js"></script>
@@ -29,10 +30,10 @@
                             aria-hidden="true">
                     </select>
                     <div class="select-wrapper">
-                        <select class="single-select">
-                            <option value="AL">Alabama</option>
-                            <option value="KY">Kentucky</option>
-                            <option value="WY">Wyoming</option>
+                        <select id="order-select" class="single-select">
+                            <option value="name">Name</option>
+                            <option value="caste">Caste</option>
+                            <option value="birthday">Birthday</option>
                         </select>
                     </div>
                     <!--<h2>Participants</h2>-->
