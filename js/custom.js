@@ -7,5 +7,11 @@ $(document).ready(function() {
         autoplaySpeed: 5000
     });
     $('.tabs').tabslet();
+    var body = $("body");
+    var top = body.scrollTop();
+
+    $('footer').find('.scroll-btn').on('click', function() {
+        body.animate({scrollTop:0}, '500');
+    });
 });
 

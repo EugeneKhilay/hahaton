@@ -200,7 +200,7 @@ header {
   }
 }
 main {
-  margin-bottom: 100px;
+  margin-bottom: 25px;
   .container {
     padding: 70px 100px;
     background-color: #fff;
@@ -322,7 +322,7 @@ main {
       font: 25px / 26px 'OpenSans', sans-serif;
       text-transform: uppercase;
       .title-yellow {
-        color: #ffd600;
+        color: #ffc40d;
         font: 25px / 35px 'OpenSans', sans-serif;
       }
     }
@@ -382,13 +382,30 @@ main {
       width: 100%;
     }
   }
+  .secondary-info {
+    padding-bottom: 40px;
+  }
   /* Tabs */
   .horizontal {
+    padding: 40px 0 20px;
     display: flex;
     justify-content: space-around;
     li {
+      position: relative;
       width: 30%;
       display: inline-block;
+    }
+    .active {
+      &:after {
+        content: '';
+        position: relative;
+        margin: 0 auto;
+        top: 20px;
+        display: block;
+        width: 40px;
+        height: 20px;
+        background: url('../images/arr_up.png') center no-repeat;
+      }
     }
     a {
       color: #515a5f;
@@ -400,17 +417,97 @@ main {
       text-transform: uppercase;
     }
     .tab-img {
+      margin: 0 auto;
       width: 110px;
       height: 110px;
+      border: 20px solid #ffd600;
+      border-radius: 50%;
     }
     .tab-1 {
-      background: url('../images/achiev.png');
+      .tab-img {
+        background: url('../images/achiev.png') center no-repeat;
+      }
     }
     .tab-2 {
-      background: url('../images/hobby.png');
+      .tab-img {
+        background: url('../images/hobby.png') center no-repeat;
+      }
     }
     .tab-3 {
-      background: url('../images/portfolio.png');
+      .tab-img {
+        background: url('../images/portfolio.png') center no-repeat;
+      }
+    }
+  }
+  .tab-content {
+    padding: 25px;
+    border: 20px solid whitesmoke;
+  }
+  .achievemnts-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    .list-item {
+      margin-bottom: 40px;
+      width: calc(21% + 1px);
+    }
+  }
+}
+/*----------------------------------------------- Footer -------------------------------------------------------------*/
+.profile-page {
+  footer {
+    .container {
+      margin-bottom: 65px;
+      padding: 0 45px;
+      background-color: #414146;
+      border-bottom: 20px solid #ffd600;
+    }
+  }
+}
+footer {
+  .footer-content {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    .copyright,
+    .footer-logo,
+    .scroll-up-btn {
+      width: 30%;
+    }
+    .copy {
+      margin-top: 45px;
+      padding: 0 10px;
+      display: inline-block;
+      color: #ffd600;
+      opacity: 0.5;
+      font: 13px / 26px 'OpenSans', sans-serif;
+      border: 1px solid #ffd600;
+    }
+    .footer-logo {
+      text-align: center;
+    }
+    .scroll-up-btn {
+      position: relative;
+      .scroll-btn {
+        position: relative;
+        float: right;
+        margin-top: 40px;
+        display: block;
+        width: 40px;
+        height: 40px;
+        color: #414146;
+        font: normal normal normal 25px/1 FontAwesome;
+        background-color: #ffd600;
+        &:hover {
+          cursor: pointer;
+        }
+        &:after {
+          content: '\f106';
+          position: absolute;
+          top: 7px;
+          left: 12px;
+        }
+      }
     }
   }
 }
