@@ -13,6 +13,11 @@ var detailPageModel = function MyViewModel() {
             $.get(API_GET_WORKER + id,function(data){
                 console.log(data.worker)
                 self.worker(new Worker(data.worker));
+
+                $('.folio-slider').slick({
+                    autoplay: true,
+                    autoplaySpeed: 5000
+                });
             });
         }
     };

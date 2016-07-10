@@ -49,6 +49,8 @@ var Worker = function(data) {
     this.birthday = ko.observable(data.birthday);
     this.phoneNumber = ko.observable(data.phoneNumber);
     this.startWorking = ko.observable(data.startWorking);
+    this.workingEmail = ko.observable(data.workingEmail);
+    this.skype = ko.observable(data.skype);
 
     if(data.images && data.images.length > 0){
         var avatar = data.images.find(function(image){return image.name == 'ava';});

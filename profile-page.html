@@ -48,11 +48,8 @@
                                 <br />
                                 <span class="info-title" data-bind="if caste.length()>0, text:caste()[0].name"></span> and
                                 <span class="info-title" data-bind="text:title"></span>
-
-
-
-
                             </h2>
+
                             <table class="trololo">
                                 <tr>
                                     <th>Birthday</th>
@@ -72,23 +69,21 @@
                                 </tr>
                                 <tr>
                                     <th>Tel</th>
-                                    <td><a data-bind="text:phoneNumber" href="tel:+6494461709"></a></td>
+                                    <td><a data-bind="text:phoneNumber, attr:{href:'tel:' + phoneNumber()}"></a></td>
                                 </tr>
                                 <tr>
                                     <th>Email</th>
-                                    <td><a href="mailto:pavel_v@gmail.com">pavel_v@gmail.com</a></td>
+                                    <td><a data-bind="text:workingEmail, attr:{href:'mailto:' + workingEmail()}"></a></td>
                                 </tr>
                                 <tr>
                                     <th>Skype</th>
-                                    <td>pavel_voron</td>
+                                    <td data-bind="text:skype"></td>
                                 </tr>
                             </table>
                         </div>
-                        <div class="info-folio">
-                            <div class="folio-slider">
-                                <div><img src="images/big_photo.png" /></div>
-                                <div><img src="images/big_photo.png" /></div>
-                                <div><img src="images/big_photo.png" /></div>
+                        <div class="info-folio" data-bind="with: worker">
+                            <div class="folio-slider" data-bind="foreach: images">
+                                <div><img data-bind="attr:{src:src}" /></div>
                             </div>
                         </div>
                     </section>
