@@ -100,7 +100,7 @@ var finderModel = function MyViewModel() {
     };
 
     self.gotToDetailPage = function(data){
-        window.location.href = 'profile-page.html#' + data.id();
+        window.location.href = 'profile-page.html?id=' + data.id();
     };
 
     self.runFilter = function(){
