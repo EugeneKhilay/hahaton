@@ -3,9 +3,7 @@
  */
 $(document).ready(function() {
     
-    $('.tabs').tabslet({
-        animation: true
-    });
+    $('.tabs').tabslet();
     var body = $("body");
 
     $('footer').find('.scroll-btn').on('click', function() {
