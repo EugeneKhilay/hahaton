@@ -4,5 +4,11 @@
 $(document).ready(function() {
     
     $('.tabs').tabslet();
+    var body = $("body");
+    var top = body.scrollTop();
+
+    $('footer').find('.scroll-btn').on('click', function() {
+        body.animate({scrollTop:0}, '500');
+    });
 });
 
