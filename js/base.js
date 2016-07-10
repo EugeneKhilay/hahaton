@@ -47,10 +47,20 @@ var Worker = function(data) {
     this.images = ko.observableArray(null);
     this.ava = ko.observable(null);
     this.birthday = ko.observable(data.birthday);
+    this.phoneNumber = ko.observable(data.phoneNumber);
+    this.startWorking = ko.observable(data.startWorking);
+    this.workingEmail = ko.observable(data.workingEmail);
+    this.skype = ko.observable(data.skype);
 
     if(data.images && data.images.length > 0){
-        this.ava(data.images[0].src);
+        var avatar = data.images.find(function(image){return image.name == 'ava';});
+        if(avatar) {
+            this.ava(avatar.src);
+        }
         this.images($.map(data.images, function(image) {return new Image(image);}));
+        this.images(ko.utils.arrayFilter(this.images(),function(image){
+            return image.name() != 'ava';
+        }));
     }
 
     for(var type in TagType){
