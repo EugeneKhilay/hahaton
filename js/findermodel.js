@@ -1,64 +1,9 @@
 /**
  * Created by Victor on 09.07.2016.
  */
-var API_ENDPOINT = "http://10.0.1.249/api/";
-var API_GET_WORKERS = API_ENDPOINT + "workers";
-var API_GET_TAGS = API_ENDPOINT + "tags";
-var URL_NO_AVATAR = "no avatar";
 
 var finderModel = function MyViewModel() {
     var self = this;
-
-    var TagType = {
-        TECHNOLOGY: {
-            text:"Technologies",
-            key:"technology"
-        },
-        LANGUAGE:{
-            text:"Languages",
-            key:"language"
-        },
-        CASTE:{
-            text:"Castes",
-            key:"caste"
-        }
-    };
-    var Tag = function(data) {
-        this.id = ko.observable(data.id);
-        this.name = ko.observable(data.name);
-        this.title = ko.observable(data.title);
-        this.description = ko.observable(data.name);
-        this.type = ko.observable(data.tagType);
-        this.image = ko.observable(null);
-        if(data.image) {
-            this.image = ko.observable(data.image.src);
-        }
-    };
-
-    var Image = function(data) {
-        this.id = ko.observable(data.id);
-        this.name = ko.observable(data.name);
-        this.src = ko.observable(data.src);
-    };
-
-    var Worker = function(data) {
-        this.id = ko.observable(data.id);
-        this.name = ko.observable(data.name);
-        this.title = ko.observable(data.title);
-        this.images = ko.observableArray(null);
-        this.ava = ko.observable(null);
-        if(data.images && data.images.length > 0){
-            this.ava(data.images[0].src);
-            this.images($.map(data.images, function(image) {return new Image(image);}));
-        }
-
-        for(var type in TagType){
-            var key = TagType[type].key;
-            if(data[key]) {
-                this[key] = ko.observableArray($.map(data[key], function(tag) {return new Tag(tag);}));
-            }
-        }
-    };
 
     self.filterWorkers = ko.observableArray([]);
     self.filterTags = ko.observableArray([]);
@@ -108,28 +53,76 @@ var finderModel = function MyViewModel() {
         $('.tags-select').on('change', function (evt) {
             self.runFilter();
         });
+
+        $("#order-select").select2();
+        $("#order-select").on('change', function (evt) {
+            self.order();
+        });
+    };
+
+    function sortByNameASC(lw, rw) {
+        return lw.name().toUpperCase() == rw.name().toUpperCase() ? 0 : (lw.name().toUpperCase() < rw.name().toUpperCase() ? -1 : 1);
+    }
+    function sortByBirthday(lw, rw) {
+        return lw.birthday().toUpperCase() == rw.birthday().toUpperCase() ? 0 : (lw.birthday().toUpperCase() < rw.birthday().toUpperCase() ? -1 : 1);
+    }
+
+    function sortByCaste(lw, rw) {
+        if(lw.caste().length > rw.caste().length){
+            return -1
+        }
+        if(lw.caste().length < rw.caste().length){
+            return 1
+        }
+        if(lw.caste().length == 0){
+            return 0;
+        }
+
+        return lw.caste()[0].name().toUpperCase() == rw.caste()[0].name().toUpperCase() ? 0 : (lw.caste()[0].name().toUpperCase() < rw.caste()[0].name().toUpperCase() ? -1 : 1);
+    }
+
+    self.order = function(){
+        var orderData = $('#order-select').select2('data');
+        console.log("sort by " + orderData[0].id);
+        switch(orderData[0].id){
+            case "name":
+                self.filterWorkers(self.filterWorkers().sort(sortByNameASC));
+                break;
+            case "caste":
+                self.filterWorkers(self.filterWorkers().sort(sortByCaste));
+                break;
+            case "birthday":
+                self.filterWorkers(self.filterWorkers().sort(sortByBirthday));
+                break;
+        }
+    };
+
+    self.gotToDetailPage = function(data){
+        window.location.href = 'profile-page.html#' + data.id();
     };
 
     self.runFilter = function(){
         var filteredData = $('.tags-select').select2('data');
 
         var results = ko.utils.arrayFilter(self.allWorkers(), function(worker) {
+            var foundMatchedSkills = 0;
             for(filterKey in filteredData){
                 for(var typeKey in TagType){
                     if(worker[TagType[typeKey].key]){
                         var workerTags = worker[TagType[typeKey].key];
                         for(var tagKey in workerTags()){
                             if(filteredData[filterKey].id == workerTags()[tagKey].id()){
-                                return true;
+                                foundMatchedSkills++;
                             }
                         }
                     }
                 }
             }
-            return false;
+            return filteredData.length == foundMatchedSkills;
         });
 
         self.filterWorkers(results);
+        self.order();
     };
 
     self.init();
