@@ -48,9 +48,17 @@ var Worker = function(data) {
     this.ava = ko.observable(null);
     this.birthday = ko.observable(data.birthday);
     this.phoneNumber = ko.observable(data.phoneNumber);
+    this.closePersonPhoneNumber = ko.observable(data.closePersonPhoneNumber);
     this.startWorking = ko.observable(data.startWorking);
-    this.workingEmail = ko.observable(data.workingEmail);
+    this.homeEmail = ko.observable(data.homeEmail);
     this.skype = ko.observable(data.skype);
+
+    this.address = ko.observable(data.address);
+    this.hobby = ko.observable(data.hobby);
+    this.loginToComputer = ko.observable(data.loginToComputer);
+    this.whereIsSitting = ko.observable(data.whereIsSitting);
+    this.workingEmail = ko.observable(data.workingEmail);
+
 
     if(data.images && data.images.length > 0){
         var avatar = data.images.find(function(image){return image.name == 'ava';});
@@ -70,3 +78,13 @@ var Worker = function(data) {
         }
     }
 };
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}

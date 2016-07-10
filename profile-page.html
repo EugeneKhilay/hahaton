@@ -74,13 +74,38 @@
                                     <td><a data-bind="text:phoneNumber, attr:{href:'tel:' + phoneNumber()}"></a></td>
                                 </tr>
                                 <tr>
-                                    <th>Email</th>
-                                    <td><a data-bind="text:workingEmail, attr:{href:'mailto:' + workingEmail()}"></a></td>
-                                </tr>
-                                <tr>
                                     <th>Skype</th>
                                     <td data-bind="text:skype"></td>
                                 </tr>
+                                <tr>
+                                    <th>Working Email</th>
+                                    <td><a data-bind="text:workingEmail,attr:{href:'mailto:' + workingEmail()}"></a></td>
+                                </tr>
+                                <tr>
+                                    <th>*</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Close Person Tel</th>
+                                    <td><a data-bind="text:closePersonPhoneNumber, attr:{href:'tel:' + closePersonPhoneNumber()}"></a></td>
+                                </tr>
+                                <tr>
+                                    <th>Address</th>
+                                    <td data-bind="text:address"></td>
+                                </tr>
+                                <tr>
+                                    <th>Credentials to Computer</th>
+                                    <td data-bind="text:loginToComputer"></td>
+                                </tr>
+                                <tr>
+                                    <th>Where is Sitting</th>
+                                    <td data-bind="text:whereIsSitting"></td>
+                                </tr>
+                                <tr>
+                                    <th>Home Email</th>
+                                    <td><a data-bind="text:homeEmail, attr:{href:'mailto:' + homeEmail()}"></a></td>
+                                </tr>
+
                             </table>
                         </div>
 
