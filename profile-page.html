@@ -17,14 +17,14 @@
     </head>
     <body class="profile-page">
         <header>
-            <div class="container">
-                <div class="header-logo profile-header" data-bind="with: worker">
+            <div class="container" data-bind="with: worker">
+                <div class="header-logo profile-header" >
                     <div class="person-img">
                         <!-- ko if: ava -->
                             <img data-bind="attr: { src: ava}" />
                         <!-- /ko -->​
                     </div>
-                    <h1 class="name-title" data-bind="text:worker.name">Pavel Voronovsky</h1>
+                    <h1 class="name-title" data-bind="text:name"></h1>
                     <span class="caste-title" data-bind="if caste.length()>0, text:caste()[0].name"></span>
                     <ul class="social-btns">
                         <li class="list-item">
