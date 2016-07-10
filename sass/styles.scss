@@ -520,6 +520,9 @@ main {
   .tab-content {
     padding: 25px 25px 0;
     border: 20px solid whitesmoke;
+    &#tab-2,&#tab-3{
+      padding: 25px 25px 20px;
+    }
   }
   .achievemnts-list {
     display: -webkit-flex;
