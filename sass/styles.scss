@@ -554,3 +554,15 @@ footer {
     }
   }
 }
+
+#loading{
+  display: none;
+  background-image: url('../images/loading.gif');
+  background-position: center;
+  position:fixed;
+  top:0px;left:0px;
+  width:100%;
+  height:100%;
+  background: #000;
+  opacity: 0.9;
+}

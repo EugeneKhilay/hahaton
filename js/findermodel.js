@@ -99,10 +99,6 @@ var finderModel = function MyViewModel() {
         }
     };
 
-    self.gotToDetailPage = function(data){
-        window.location.href = 'profile-page.html?id=' + data.id();
-    };
-
     self.runFilter = function(){
         var filteredData = $('.tags-select').select2('data');
 
