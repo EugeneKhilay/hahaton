@@ -52,13 +52,13 @@ var Worker = function(data) {
     this.startWorking = ko.observable(data.startWorking);
     this.homeEmail = ko.observable(data.homeEmail);
     this.skype = ko.observable(data.skype);
-
     this.address = ko.observable(data.address);
     this.hobby = ko.observable(data.hobby);
     this.loginToComputer = ko.observable(data.loginToComputer);
     this.whereIsSitting = ko.observable(data.whereIsSitting);
     this.workingEmail = ko.observable(data.workingEmail);
 
+    this.achievement = ko.observableArray(($.map(data.achievement, function(tag) {return new Tag(tag);})));
 
     if(data.images && data.images.length > 0){
         var avatar = data.images.find(function(image){return image.name == 'ava';});

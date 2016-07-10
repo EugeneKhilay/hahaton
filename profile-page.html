@@ -142,25 +142,10 @@
                                     </a>
                                 </li>
                             </ul>
-                            <div class="tab-content" id="tab-1" style="display: block;">
-                                <ul class="achievemnts-list">
+                            <div class="tab-content" id="tab-1" style="display: block;" data-bind="with: worker">
+                                <ul class="achievemnts-list" data-bind="if achievement().length>0, foreach:achievement">
                                     <li class="list-item">
-                                        <img src="images/1Year.png" />
-                                    </li>
-                                    <li class="list-item">
-                                        <img src="images/1Year.png" />
-                                    </li>
-                                    <li class="list-item">
-                                        <img src="images/1Year.png" />
-                                    </li>
-                                    <li class="list-item">
-                                        <img src="images/1Year.png" />
-                                    </li>
-                                    <li class="list-item">
-                                        <img src="images/1Year.png" />
-                                    </li>
-                                    <li class="list-item">
-                                        <img src="images/1Year.png" />
+                                        <img data-bind="attr:{src:image,title:name}" />
                                     </li>
                                 </ul>
                             </div>
