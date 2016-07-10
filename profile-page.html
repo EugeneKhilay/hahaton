@@ -8,7 +8,8 @@
         <link href="css/styles.css" rel="stylesheet" />
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="js/knockout-3.4.0.js"></script>
-        <script src="js/findermodel.js"></script>
+        <script src="js/base.js"></script>
+        <script src="js/detailPageModel.js"></script>
         <script src="js/custom.js"></script>
         <script src="js/select2.min.js"></script>
         <script src="js/slick.min.js"></script>
@@ -17,12 +18,14 @@
     <body class="profile-page">
         <header>
             <div class="container">
-                <div class="header-logo profile-header">
+                <div class="header-logo profile-header" data-bind="with: worker">
                     <div class="person-img">
-                        <img src="images/Pavel.png" />
+                        <!-- ko if: ava -->
+                            <img data-bind="attr: { src: ava}" />
+                        <!-- /ko -->​
                     </div>
-                    <h1 class="name-title">Pavel Voronovsky</h1>
-                    <span class="caste-title">Designer</span>
+                    <h1 class="name-title" data-bind="text:worker.name">Pavel Voronovsky</h1>
+                    <span class="caste-title" data-bind="if caste.length()>0, text:caste()[0].name"></span>
                     <ul class="social-btns">
                         <li class="list-item">
                             <a href="/" class="facebook-link item-link"></a>
@@ -38,19 +41,26 @@
             <div class="container">
                 <div class="profile-content">
                     <section class="main-info">
-                        <div class="info-about">
+                        <div class="info-about" data-bind="with: worker">
                             <h2 class="info-title">
-                                Hello, I'm <span class="title-yellow">Pavel Voronevsky</span><br /> designer and
-                                art-director
+                                Hello, I'm
+                                <span class="title-yellow" data-bind="text:name"></span>
+                                <br />
+                                <span class="info-title" data-bind="if caste.length()>0, text:caste()[0].name"></span> and
+                                <span class="info-title" data-bind="text:title"></span>
+
+
+
+
                             </h2>
                             <table class="trololo">
                                 <tr>
                                     <th>Birthday</th>
-                                    <td>05.02.1983</td>
+                                    <td data-bind="text:birthday"></td>
                                 </tr>
                                 <tr>
                                     <th>Startday</th>
-                                    <td>05.02.1983</td>
+                                    <td data-bind="text:startWorking"></td>
                                 </tr>
                                 <tr>
                                     <th>From</th>
@@ -62,7 +72,7 @@
                                 </tr>
                                 <tr>
                                     <th>Tel</th>
-                                    <td><a href="tel:+6494461709">(093) 98 05 647</a></td>
+                                    <td><a data-bind="text:phoneNumber" href="tel:+6494461709"></a></td>
                                 </tr>
                                 <tr>
                                     <th>Email</th>
