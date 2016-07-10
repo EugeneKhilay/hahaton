@@ -65,7 +65,9 @@
                                 </tr>
                                 <tr>
                                     <th>Language</th>
-                                    <td>ru / ua / en</td>
+                                    <td data-bind="if  language().length > 0, foreach: language">
+                                        <bold data-bind="text:name"></bold><span> / </span>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Tel</th>
@@ -81,11 +83,17 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="info-folio" data-bind="with: worker">
-                            <div class="folio-slider" data-bind="foreach: images">
-                                <div><img data-bind="attr:{src:src}" /></div>
+
+
+                            <div class="info-folio" data-bind="with: worker">
+                                <!-- ko if: images().length > 0 -->
+                                    <div class="folio-slider" data-bind="foreach: images">
+                                        <div><img data-bind="attr:{src:src}" /></div>
+                                    </div>
+                                <!-- /ko -->​
                             </div>
-                        </div>
+
+
                     </section>
                     <section class="secondary-info">
                         <div class="tabs tabs_default">
