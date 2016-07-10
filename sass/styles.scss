@@ -23,7 +23,7 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  font-family: 'BebasNeueRegular', OpenSans, sans-serif;
+  font-family: 'BebasNeueRegular', 'OpenSans', sans-serif;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -33,6 +33,12 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
+}
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 ol, ul {
   list-style: none;
@@ -70,6 +76,15 @@ table {
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/OpenSans.woff') format('woff'),
+       url('../fonts/OpenSans.ttf')  format('truetype'),
+       url('../fonts/OpenSans.svg#OpenSans') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /*================================================ My styles =========================================================*/
 body {
@@ -78,20 +93,70 @@ body {
 .container {
   margin: 0 auto;
   max-width: 1024px;
+  box-sizing: border-box;
 }
 /*----------------------------------------------- Header -------------------------------------------------------------*/
 header {
   .header-logo {
-    margin-top: 75px;
-    padding: 0 0 50px;
+    position: relative;
+    margin: 70px 0 30px;
     text-align: center;
-    background-color: #414146;
+    background-color: rgba(65, 65, 70, 0.85);
+    &.profile-header {
+      text-align: left;
+    }
   }
   .main-title {
     text-indent: -9999px;
   }
+  .person-img {
+    position: absolute;
+    top: -60px;
+    left: 37px;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    box-sizing: border-box;
+    border: 2px solid #fff;
+    img {
+      height: 100%;
+    }
+  }
+  .name-title {
+    padding: 30px 0 17px 220px;
+    color: #414146;
+    font-family: BebasNeueBold;
+    font-size: 44px;
+    line-height: 63px;
+    text-transform: uppercase;
+    background-color: #ffd600;
+  }
+  .caste-title {
+    display: inline-block;
+    padding: 26px 0 20px 35px;
+    color: white;
+    font-size: 23px;
+    line-height: 34px;
+    text-transform: uppercase;
+  }
+  .social-btns {
+    float: right;
+    .list-item {
+      display: inline-block;
+    }
+  }
 }
 /*---------------------------------------------- Content -------------------------------------------------------------*/
+.select2-container--default .select2-results__option .select2-results__option {
+  font-family: 'OpenSans', sans-serif;
+  color: #90909b;
+}
+.select2-container--default .select2-results__group {
+  font-family: 'OpenSans', sans-serif;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__rendered li {
+  font-family: 'OpenSans', sans-serif;
+} /* select font color and style */
 main {
   margin-bottom: 100px;
   .container {
@@ -108,7 +173,7 @@ main {
       background-color: #eaeaea;
       .select2-selection__rendered {
         padding: 10px 0 10px 50px;
-        background: url('../images/search.png') 15px center no-repeat;
+        background: url('../images/search.png') 15px 15px no-repeat;
       }
     }
   }
@@ -130,8 +195,29 @@ main {
       .select2-selection__rendered {
         padding: 10px 0;
         color: #fff;
+        font: 30px / 36px 'BebasNeueBold', 'OpenSans', sans-serif;
+        font-size: 30px;
+        line-height: 36px;
+        text-transform: uppercase;
         background: none;
       }
+    }
+  }
+  .select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 15px;
+    right: 10px;
+    color: #fff;
+    font: normal normal normal 19px/1 FontAwesome;
+    &:before {
+      content: '\f107';
+    }
+    b {
+      display: none;
+    }
+  }
+  .select2-container--open .select2-selection--single .select2-selection__arrow {
+    &:before {
+      content: '\f106';
     }
   }
   .content {
@@ -143,6 +229,24 @@ main {
       margin-bottom: 55px;
       padding-left: 5%;
       width: 20%;
+      .section-title,
+      .section-subtitle {
+        display: block;
+        text-align: center;
+      }
+      .main-link {
+        color: #414146;
+      }
+      .section-title {
+        font-size: 20px;
+        line-height: 30px;
+      }
+      .subtitle-link {
+        color: #90909b;
+      }
+      .section-subtitle {
+        font-size: 15px;
+      }
     }
     .img-wrapper {
       img {
