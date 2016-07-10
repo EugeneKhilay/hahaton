@@ -47,6 +47,7 @@ var finderModel = function MyViewModel() {
             console.log(data.workers)
             self.allWorkers($.map(data.workers, function(worker) {return new Worker(worker);}));
             self.runFilter();
+            $("#loading").fadeOut();
         });
 
         $(".tags-select").select2({tags: true});

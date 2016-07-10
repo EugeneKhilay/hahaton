@@ -18,6 +18,7 @@ var detailPageModel = function MyViewModel() {
                 autoplay: true,
                 autoplaySpeed: 5000
             });
+            $("#loading").fadeOut();
         });
 
     };
