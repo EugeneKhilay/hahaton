@@ -27,21 +27,6 @@
                 <div class="filter-wrapper">
                     <select class="tags-select form-control select2-hidden-accessible" multiple="" tabindex="-1"
                             aria-hidden="true">
-                        <optgroup label="Caste">
-                            <option value="manager">Manager</option>
-                            <option value="dev">Developer</option>
-                            <option value="design">Desinger</option>
-                        </optgroup>
-                        <optgroup label="Programming Languages">
-                            <option value="php">PHP</option>
-                            <option value="html">HTML</option>
-                            <option value="css">CSS</option>
-                        </optgroup>
-                        <optgroup label="Peoples">
-                            <option value="dima">Dima</option>
-                            <option value="eugene">Eugene</option>
-                            <option value="vitaliy">Vitaliy</option>
-                        </optgroup>
                     </select>
                     <div class="select-wrapper">
                         <select class="single-select">
@@ -59,89 +44,22 @@
                     <!--<p>Credits: <span data-bind="text: caste"></span></p>-->
                     <!--</script>-->
                 </div>
-                <div class="content">
+
+                <div class="content" data-bind="foreach: filterWorkers">
                     <section class="worker-item">
                         <a href="/" class="main-link">
                             <div class="img-wrapper">
-                                <img src="images/Pavel.png" />
+                                <!-- ko if: ava -->
+                                    <img data-bind="attr: { src: ava}" />
+                                <!-- /ko -->​
                             </div>
-                            <h2 class="section-title">Pavel Voronovsky</h2>
+                            <h2 class="section-title" data-bind="text: name"></h2>
                         </a>
                         <a href="/" class="subtitle-link">
-                            <span class="section-subtitle">Art-Director</span>
+                            <span class="section-subtitle" data-bind="text: title"></span>
                         </a>
                     </section>
-                    <section class="worker-item">
-                        <a href="/" class="main-link">
-                            <div class="img-wrapper">
-                                <img src="images/Pavel.png" />
-                            </div>
-                            <h2 class="section-title">Pavel Voronovsky</h2>
-                        </a>
-                        <a href="/" class="subtitle-link">
-                            <span class="section-subtitle">Art-Director</span>
-                        </a>
-                    </section><section class="worker-item">
-                    <a href="/" class="main-link">
-                        <div class="img-wrapper">
-                            <img src="images/Pavel.png" />
-                        </div>
-                        <h2 class="section-title">Pavel Voronovsky</h2>
-                    </a>
-                    <a href="/" class="subtitle-link">
-                        <span class="section-subtitle">Art-Director</span>
-                    </a>
-                </section><section class="worker-item">
-                    <a href="/" class="main-link">
-                        <div class="img-wrapper">
-                            <img src="images/Pavel.png" />
-                        </div>
-                        <h2 class="section-title">Pavel Voronovsky</h2>
-                    </a>
-                    <a href="/" class="subtitle-link">
-                        <span class="section-subtitle">Art-Director</span>
-                    </a>
-                </section><section class="worker-item">
-                    <a href="/" class="main-link">
-                        <div class="img-wrapper">
-                            <img src="images/Pavel.png" />
-                        </div>
-                        <h2 class="section-title">Pavel Voronovsky</h2>
-                    </a>
-                    <a href="/" class="subtitle-link">
-                        <span class="section-subtitle">Art-Director</span>
-                    </a>
-                </section><section class="worker-item">
-                    <a href="/" class="main-link">
-                        <div class="img-wrapper">
-                            <img src="images/Pavel.png" />
-                        </div>
-                        <h2 class="section-title">Pavel Voronovsky</h2>
-                    </a>
-                    <a href="/" class="subtitle-link">
-                        <span class="section-subtitle">Art-Director</span>
-                    </a>
-                </section><section class="worker-item">
-                    <a href="/" class="main-link">
-                        <div class="img-wrapper">
-                            <img src="images/Pavel.png" />
-                        </div>
-                        <h2 class="section-title">Pavel Voronovsky</h2>
-                    </a>
-                    <a href="/" class="subtitle-link">
-                        <span class="section-subtitle">Art-Director</span>
-                    </a>
-                </section><section class="worker-item">
-                    <a href="/" class="main-link">
-                        <div class="img-wrapper">
-                            <img src="images/Pavel.png" />
-                        </div>
-                        <h2 class="section-title">Pavel Voronovsky</h2>
-                    </a>
-                    <a href="/" class="subtitle-link">
-                        <span class="section-subtitle">Art-Director</span>
-                    </a>
-                </section>
+
                 </div>
             </div>
         </main>
