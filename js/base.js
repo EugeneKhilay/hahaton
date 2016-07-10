@@ -4,6 +4,7 @@
 
 var API_ENDPOINT = "http://10.0.1.249/api/";
 var API_GET_WORKERS = API_ENDPOINT + "workers";
+var API_GET_WORKER = API_ENDPOINT + "worker/";
 var API_GET_TAGS = API_ENDPOINT + "tags";
 
 var TagType = {

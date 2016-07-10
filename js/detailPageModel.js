@@ -8,14 +8,14 @@ var detailPageModel = function MyViewModel() {
     self.worker = ko.observable(null);
 
     self.init = function(){
-
-        $.get(API_GET_WORKERS,function(data){
-            console.log(data.workers)
-
-        });
-
+        if(window.location.hash) {
+            var id = parseInt(window.location.hash.substring(1));
+            $.get(API_GET_WORKER + id,function(data){
+                console.log(data.worker)
+                self.worker(new Worker(data.worker));
+            });
+        }
     };
-
     self.init();
 };
 

@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="content" data-bind="foreach: filterWorkers">
-                    <section class="worker-item">
+                    <section class="worker-item" data-bind="click: gotToDetailPage">
                         <a href="/" class="main-link">
                             <div class="img-wrapper">
                                 <!-- ko if: ava -->
