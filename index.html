@@ -48,8 +48,8 @@
                 </div>
 
                 <div class="content" data-bind="foreach: filterWorkers">
-                    <section class="worker-item" data-bind="click: gotToDetailPage">
-                        <a href="/" class="main-link">
+                    <section class="worker-item">
+                        <a data-bind="attr:{href:'profile-page.html?id=' + id()}" class="main-link">
                             <div class="img-wrapper">
                                 <!-- ko if: ava -->
                                     <img data-bind="attr: { src: ava}" />
@@ -57,7 +57,7 @@
                             </div>
                             <h2 class="section-title" data-bind="text: name"></h2>
                         </a>
-                        <a href="/" class="subtitle-link">
+                        <a data-bind="attr:{href:'profile-page.html?id=' + id()}" class="subtitle-link">
                             <span class="section-subtitle" data-bind="text: title"></span>
                         </a>
                     </section>
@@ -82,5 +82,6 @@
                 </div>
             </div>
         </footer>
+        <div id="loading"></div>
     </body>
 </html>
