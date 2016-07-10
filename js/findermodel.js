@@ -54,7 +54,9 @@ var finderModel = function MyViewModel() {
             self.runFilter();
         });
 
-        $("#order-select").select2();
+        $("#order-select").select2({
+            minimumResultsForSearch: Infinity
+        });
         $("#order-select").on('change', function (evt) {
             self.order();
         });

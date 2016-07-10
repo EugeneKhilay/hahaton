@@ -98,6 +98,7 @@ table {
 /*================================================ My styles =========================================================*/
 body {
   background: url('../images/backgr.jpg') center top no-repeat;
+  background-size: cover;
 }
 .container {
   margin: 0 auto;
@@ -105,10 +106,25 @@ body {
   box-sizing: border-box;
 }
 /*----------------------------------------------- Header -------------------------------------------------------------*/
+.profile-page {
+  header {
+    .header-logo {
+      background-color: #414146;
+    }
+  }
+}
+.home {
+  header {
+    img {
+      left: -45px;
+      position: relative;
+    }
+  }
+}
 header {
   .header-logo {
     position: relative;
-    margin: 70px 0 30px;
+    margin: 70px 0 20px;
     text-align: center;
     background-color: rgba(65, 65, 70, 0.85);
     &.profile-header {
@@ -128,7 +144,7 @@ header {
     box-sizing: border-box;
     border: 2px solid #fff;
     img {
-      height: 100%;
+      width: 100%;
     }
   }
   .name-title {
@@ -193,14 +209,17 @@ header {
 }
 .select2-container--default .select2-selection--multiple .select2-selection__rendered li {
   font-family: 'OpenSans', sans-serif;
-} /* select font color and style */
+}
+.select2-results__option {
+  font-family: 'OpenSans', sans-serif;
+}/* select font color and style */
 .profile-page {
   .container {
     padding: 0;
   }
 }
 main {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   .container {
     padding: 70px 100px;
     background-color: #fff;
@@ -212,6 +231,7 @@ main {
   .select2-container {
     .select2-selection {
       border-radius: 0;
+      border: none;
       background-color: #eaeaea;
       .select2-selection__rendered {
         padding: 10px 0 10px 50px;
@@ -220,13 +240,13 @@ main {
     }
   }
   .tags-select {
-    min-width: 70%;
+    min-width: 74%;
   }
   .select-wrapper {
     display: inline-block;
-    padding-left: 40px;
+    padding-left: 4%;
     box-sizing: border-box;
-    width: calc(30% - 5px);
+    width: calc(26% - 5px);
     .single-select {
       width: 100%;
     }
@@ -234,6 +254,9 @@ main {
       height: 50px;
       text-align: center;
       background-color: #414146;
+      &:focus {
+        outline: none;
+      }
       .select2-selection__rendered {
         padding: 10px 0;
         color: #fff;
@@ -291,8 +314,20 @@ main {
       }
     }
     .img-wrapper {
+      margin-bottom: 5px;
+      max-height: 170px;
+      overflow: hidden;
+      &:hover img {
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
       img {
         width: 100%;
+        max-width: 100%;
+        -moz-transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
       }
     }
   }
@@ -353,6 +388,10 @@ main {
       background-color: #ffd600;
       font-size: 0;
       border: none;
+      &:hover {
+        cursor: pointer;
+        background-color: #ffc40d;
+      }
     }
     .slick-prev {
       bottom: 10px;
@@ -409,6 +448,9 @@ main {
     }
     a {
       color: #515a5f;
+      &:hover .tab-img {
+        border-color: #ffc40d;
+      }
     }
     .tab-title {
       text-align: center;
@@ -425,17 +467,17 @@ main {
     }
     .tab-1 {
       .tab-img {
-        background: url('../images/achiev.png') center no-repeat;
+        background: #fefaea url('../images/achiev.png') center no-repeat;
       }
     }
     .tab-2 {
       .tab-img {
-        background: url('../images/hobby.png') center no-repeat;
+        background: #fefaea url('../images/hobby.png') center no-repeat;
       }
     }
     .tab-3 {
       .tab-img {
-        background: url('../images/portfolio.png') center no-repeat;
+        background: #fefaea url('../images/portfolio.png') center no-repeat;
       }
     }
   }
@@ -454,7 +496,8 @@ main {
   }
 }
 /*----------------------------------------------- Footer -------------------------------------------------------------*/
-.profile-page {
+.profile-page,
+.home {
   footer {
     .container {
       margin-bottom: 65px;
