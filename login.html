@@ -8,9 +8,10 @@
         <link href="css/styles.css" rel="stylesheet" />
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="js/knockout-3.4.0.js"></script>
-        <script src="js/core.js"></script>
 
-        <script src="js/custom.js"></script>
+        <script src="js/core.js"></script>
+        <script src="js/loginModel.js"></script>
+
         <title>eWorkers, Login page</title>
     </head>
     <body class="home">
@@ -25,9 +26,13 @@
             </div>
         </header>
         <main>
-            <div><input id="username" type="text"/></div>
-            <div><input id="password" type="password"/></div>
-            <div><input id="loginAction" type="button" value="sign in"/></div>
+            <div class="container">
+                <p data-bind="text:message"></p>
+                <div><input data-bind="value:username" type="text"/></div>
+                <div><input data-bind="value:password" id="password" type="password"/></div>
+                <div><input data-bind="click:doLogin" type="button" value="sign in"/></div>
+            </div>
+
         </main>
         <footer>
             <div class="container">
@@ -46,6 +51,5 @@
                 </div>
             </div>
         </footer>
-        <div id="loading"></div>
     </body>
 </html>

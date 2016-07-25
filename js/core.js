@@ -2,7 +2,10 @@
  * Created by Victor on 10.07.2016.
  */
 
-var API_ENDPOINT = "http://www.eworkers.space:8080/api/";
+var API_ENDPOINT = location.host == 'www.eworkers.space'
+    ? "http://www.eworkers.space:8080/api/"
+    : "http://www.eworkers.space:8080/api/";
+var API_POST_LOGIN = API_ENDPOINT + "login";
 var API_GET_WORKERS = API_ENDPOINT + "workers";
 var API_GET_WORKER = API_ENDPOINT + "worker/";
 var API_GET_TAGS = API_ENDPOINT + "tags";
@@ -87,4 +90,11 @@ function getParameterByName(name, url) {
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function setApiKey(apiKey){
+    localStorage.setItem("X-API-Key",apiKey);
+}
+function getApiKey(){
+    return localStorage.getItem("X-API-Key")
 }
