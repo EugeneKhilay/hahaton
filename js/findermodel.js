@@ -43,19 +43,12 @@ var finderModel = function MyViewModel() {
             }
             $('.tags-select').select2({data: dataForTags});
         });
-        $.ajax({
-            headers: {
-                'X-API-Key':getApiKey(),
-                'Content-Type':'application/json'
-            },
-            method: 'GET',
-            url:API_GET_WORKERS,
-            success:function(data){
+        $.get(API_GET_WORKERS,function(data){
                 console.log(data.workers)
                 self.allWorkers($.map(data.workers, function(worker) {return new Worker(worker);}));
                 self.runFilter();
                 $("#loading").fadeOut();
-        }});
+        });
 
         $(".tags-select").select2({tags: true});
         $('.tags-select').on('change', function (evt) {

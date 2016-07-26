@@ -93,8 +93,21 @@ function getParameterByName(name, url) {
 }
 
 function setApiKey(apiKey){
+    console.log("save " + apiKey);
     localStorage.setItem("X-API-Key",apiKey);
 }
 function getApiKey(){
-    return localStorage.getItem("X-API-Key")
+    var apiKey = localStorage.getItem("X-API-Key");
+    console.log("read " + apiKey);
+    return apiKey;
 }
+
+$(document).ready(function() {
+
+    $.ajaxSetup({
+        beforeSend: function(xhr) {
+            //xhr.setRequestHeader('X-API-Key', getApiKey());
+        }
+    });
+
+});
