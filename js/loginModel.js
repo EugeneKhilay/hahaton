@@ -6,8 +6,8 @@ var loginPageModel = function MyViewModel() {
     var self = this;
 
     self.message = ko.observable("");
-    self.username = ko.observable("victor.k");
-    self.password = ko.observable("551234a");
+    self.username = ko.observable("");
+    self.password = ko.observable("");
     self.doLogin = function(){
         self.message("");
         if(self.username().trim().length == 0){
@@ -30,8 +30,8 @@ var loginPageModel = function MyViewModel() {
                 }})
             })
             .done(function(data){
-                console.log(data);
                 setApiKey(data.user.apiKey);
+                openPage(PAGE.HOME);
             }).fail(function(data){
                 self.message("Wrong credentials");
             });

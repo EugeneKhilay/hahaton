@@ -4,11 +4,18 @@
 
 var API_ENDPOINT = location.host == 'www.eworkers.space'
     ? "http://www.eworkers.space:8080/api/"
-    : "http://www.eworkers.space:8080/api/";
+    : "http://localhost/eworkers/web/app_dev.php/api/";
+
 var API_POST_LOGIN = API_ENDPOINT + "login";
 var API_GET_WORKERS = API_ENDPOINT + "workers";
 var API_GET_WORKER = API_ENDPOINT + "worker/";
 var API_GET_TAGS = API_ENDPOINT + "tags";
+
+var PAGE = {
+    HOME:"index.html",
+    LOGIN:"login.html",
+    DETAIL_PAGE:"/"
+};
 
 var TagType = {
     TECHNOLOGY: {
@@ -102,12 +109,31 @@ function getApiKey(){
     return apiKey;
 }
 
-$(document).ready(function() {
+function openPage(page){
+    if(window.location.pathname.indexOf(page) < 0) {
+        window.location.href = page;
+        return true;
+    }
+    return false;
+}
 
+$(document).ready(function() {
     $.ajaxSetup({
         beforeSend: function(xhr) {
-            //xhr.setRequestHeader('X-API-Key', getApiKey());
+            var apiKey = getApiKey();
+            if(apiKey) {
+                xhr.setRequestHeader('X-API-Key',apiKey);
+            }else{
+                if(openPage(PAGE.LOGIN)) { // ok we are not on login page, let's go there
+                    return false;// stop current request
+                }
+            }
+        },
+        statusCode: {
+            403: function(error, callback){
+                setApiKey(null);
+                openPage(PAGE.LOGIN);
+            }
         }
     });
-
 });
