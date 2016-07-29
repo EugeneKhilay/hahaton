@@ -27,7 +27,8 @@
                         <!-- /ko -->​
                     </div>
                     <h1 class="name-title" data-bind="text:name"></h1>
-                    <span class="caste-title" data-bind="if caste.length()>0, text:caste()[0].name"></span>
+
+                    <span class="caste-title" data-bind="text:caste().length>0 ? caste()[0].name : ''"></span>
                     <a href="/" class="back-linkl">Back</a>
                     <ul class="social-btns">
                         <li class="list-item">
@@ -49,7 +50,7 @@
                                 Hello, I'm
                                 <span class="title-yellow" data-bind="text:name"></span>
                                 <br />
-                                <span class="info-title" data-bind="if caste.length()>0, text:caste()[0].name"></span> and
+                                <span class="info-title" data-bind="text:caste().length>0 ? caste()[0].name : ''"></span> and
                                 <span class="info-title" data-bind="text:title"></span>
                             </h2>
 

@@ -28,8 +28,7 @@ var loginPageModel = function MyViewModel() {
                     password:self.password(),
                     username:self.username()
                 }})
-            })
-            .done(function(data){
+            }).done(function(data){
                 setApiKey(data.user.apiKey);
                 openPage(PAGE.HOME);
             }).fail(function(data){
