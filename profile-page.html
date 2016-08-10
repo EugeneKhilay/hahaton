@@ -28,7 +28,7 @@
                     </div>
                     <h1 class="name-title" data-bind="text:name"></h1>
 
-                    <span class="caste-title" data-bind="text:caste().length>0 ? caste()[0].name : ''"></span>
+                    <span class="caste-title" data-bind="text:caste"></span>
                     <a href="/" class="back-linkl">Back</a>
                     <ul class="social-btns">
                         <li class="list-item">
@@ -68,8 +68,8 @@
                                     <td>Cherkassy</td>
                                 </tr>
                                 <tr>
-                                    <th>Language</th>
-                                    <td data-bind="if  language().length > 0, foreach: language">
+                                    <th>Languages</th>
+                                    <td data-bind="if  languages().length > 0, foreach: languages">
                                         <bold data-bind="text:name"></bold><span> / </span>
                                     </td>
                                 </tr>
@@ -147,7 +147,7 @@
                                 </li>
                             </ul>
                             <div class="tab-content" id="tab-1" style="display: block;" data-bind="with: worker">
-                                <ul class="achievemnts-list" data-bind="if achievement().length>0, foreach:achievement">
+                                <ul class="achievemnts-list" data-bind="if achievements().length>0, foreach:achievements">
                                     <li class="list-item">
                                         <img data-bind="attr:{src:image,title:name}" />
                                     </li>

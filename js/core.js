@@ -17,19 +17,13 @@ var PAGE = {
     DETAIL_PAGE:"/"
 };
 
+
+
 var TagType = {
-    TECHNOLOGY: {
-        text:"Technologies",
-        key:"technology"
-    },
-    LANGUAGE:{
-        text:"Languages",
-        key:"language"
-    },
-    CASTE:{
-        text:"Castes",
-        key:"caste"
-    }
+    TECH:   "technology",
+    LANG:   "language",
+    CASTE:  "caste",
+    ACHIV:    "achievement"
 };
 
 var Tag = function(data) {
@@ -51,6 +45,7 @@ var Image = function(data) {
 };
 
 var Worker = function(data) {
+    var that = this;
     this.id = ko.observable(data.id);
     this.name = ko.observable(data.name);
     this.title = ko.observable(data.title);
@@ -67,26 +62,31 @@ var Worker = function(data) {
     this.loginToComputer = ko.observable(data.loginToComputer);
     this.whereIsSitting = ko.observable(data.whereIsSitting);
     this.workingEmail = ko.observable(data.workingEmail);
-
-    this.achievement = ko.observableArray(($.map(data.achievement, function(tag) {return new Tag(tag);})));
-
     if(data.images && data.images.length > 0){
-        var avatar = data.images.find(function(image){return image.name == 'ava';});
-        if(avatar) {
-            this.ava(avatar.src);
-        }
-        this.images($.map(data.images, function(image) {return new Image(image);}));
+        this.images($.map(data.images, function(image) {
+            var anImage = new Image(image);
+            (anImage.name() == 'ava') && that.ava(anImage.src());
+            return anImage;
+        }));
         this.images(ko.utils.arrayFilter(this.images(),function(image){
             return image.name() != 'ava';
         }));
     }
 
-    for(var type in TagType){
-        var key = TagType[type].key;
-        if(data[key]) {
-            this[key] = ko.observableArray($.map(data[key], function(tag) {return new Tag(tag);}));
+    this.caste = ko.observable("");
+    this.languages = ko.observableArray([]);
+    this.achievements = ko.observableArray([]);
+
+    this.tags = ko.observableArray($.map(data.tags, function(tag) {
+        var aTag = new Tag(tag);
+        switch(aTag.type()){
+            case TagType.ACHIV : that.achievements().push(aTag); break;
+            case TagType.CASTE : that.caste(aTag.name()); break;
+            case TagType.LANG : that.languages().push(aTag); break;
         }
-    }
+
+        return aTag;
+    }));
 };
 
 function getParameterByName(name, url) {
@@ -117,23 +117,28 @@ function openPage(page){
     return false;
 }
 
-$(document).ready(function() {
-    $.ajaxSetup({
-        beforeSend: function(xhr) {
-            var apiKey = getApiKey();
-            if(apiKey) {
-                xhr.setRequestHeader('X-API-Key',apiKey);
-            }else{
-                if(openPage(PAGE.LOGIN)) { // ok we are not on login page, let's go there
-                    return false;// stop current request
-                }
-            }
+function getSecureRequest(url,callback){
+    var apiKey = getApiKey();
+    if(!apiKey) {
+        openPage(PAGE.LOGIN);
+        return;
+    }
+    $.ajax({
+        url:url,
+        headers:{'X-API-Key':apiKey},
+        type: "GET",
+        cache: false,
+        success: function(data, textStatus, xhr) {
+            console.log(xhr.status);
+            callback(data);
         },
-        statusCode: {
-            403: function(error, callback){
-                setApiKey(null);
-                openPage(PAGE.LOGIN);
+        complete: function(xhr, textStatus) {
+            switch(xhr.status){
+                case 403:
+                    setApiKey(null);
+                    openPage(PAGE.LOGIN);
+                    break;
             }
         }
     });
-});
+}

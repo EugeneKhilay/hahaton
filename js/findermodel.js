@@ -11,44 +11,38 @@ var finderModel = function MyViewModel() {
     self.allWorkers = ko.observableArray([]);
 
     self.init = function(){
-        $.get(API_GET_TAGS,function(data){
-            console.log(data.tags)
+
+        getSecureRequest(API_GET_TAGS,function(data){
 
             var groupedTags = {};
             self.allTags($.map(data.tags, function(tag) {
-                for(var type in TagType){
-                    var key = TagType[type].key;
-                    if(tag.tagType != key){
-                        continue;
-                    }
-                    if(groupedTags[key]) {
-                        groupedTags[key].push(tag);
-                    }else{
-                        groupedTags[key] = [tag];
-                    }
+                if(groupedTags[tag.tagType]) {
+                    groupedTags[tag.tagType].push(tag);
+                }else{
+                    groupedTags[tag.tagType] = [tag];
                 }
                 return new Tag(tag);
             }));
 
             var dataForTags = [];
-            for(var type in TagType){
-                var key = TagType[type].key;
-                if(groupedTags[key]) {
+            for(var key in groupedTags){
                     dataForTags.push({
                         id:key,
-                        text:TagType[type].text,
+                        text:key,
                         children:$.map(groupedTags[key], function(tag){return {id:tag.id,text:tag.name};})
                     });
-                }
+
             }
             $('.tags-select').select2({data: dataForTags});
-        });
-        $.get(API_GET_WORKERS,function(data){
+
+            getSecureRequest(API_GET_WORKERS,function(data){
                 console.log(data.workers)
                 self.allWorkers($.map(data.workers, function(worker) {return new Worker(worker);}));
                 self.runFilter();
                 $("#loading").fadeOut();
+            });
         });
+
 
         $(".tags-select").select2({tags: true});
         $('.tags-select').on('change', function (evt) {
@@ -105,21 +99,15 @@ var finderModel = function MyViewModel() {
 
         var results = ko.utils.arrayFilter(self.allWorkers(), function(worker) {
             var foundMatchedSkills = 0;
-            for(filterKey in filteredData){
-                for(var typeKey in TagType){
-                    if(worker[TagType[typeKey].key]){
-                        var workerTags = worker[TagType[typeKey].key];
-                        for(var tagKey in workerTags()){
-                            if(filteredData[filterKey].id == workerTags()[tagKey].id()){
-                                foundMatchedSkills++;
-                            }
-                        }
+            for(var filterKey in filteredData){
+                for(var tagKey in worker.tags()){
+                    if(filteredData[filterKey].id == worker.tags()[tagKey].id()){
+                        foundMatchedSkills++;
                     }
                 }
             }
             return filteredData.length == foundMatchedSkills;
         });
-
         self.filterWorkers(results);
         self.order();
     };

@@ -10,7 +10,7 @@ var detailPageModel = function MyViewModel() {
     self.init = function(){
 
         var id = getParameterByName('id');
-        $.get(API_GET_WORKER + id,function(data){
+        getSecureRequest(API_GET_WORKER + id,function(data){
             console.log(data.worker)
             self.worker(new Worker(data.worker));
 
