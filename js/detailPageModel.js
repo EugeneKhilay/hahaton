@@ -6,6 +6,7 @@ var detailPageModel = function MyViewModel() {
     var self = this;
 
     self.worker = ko.observable(null);
+    self.formattedFields = ko.observableArray([]);
 
     self.init = function(){
 
@@ -13,6 +14,8 @@ var detailPageModel = function MyViewModel() {
         getSecureRequest(API_GET_WORKER + id,function(data){
             console.log(data.worker)
             self.worker(new Worker(data.worker));
+
+
 
             $('.folio-slider').slick({
                 autoplay: true,

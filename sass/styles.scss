@@ -392,6 +392,12 @@ main {
         font: 25px / 35px 'OpenSans', sans-serif;
       }
     }
+
+    .comma{
+      &:last-child{
+        display: none;
+      }
+    }
   }
   .trololo {
     color: #515a5f;
@@ -538,6 +544,7 @@ main {
   }
 }
 /*----------------------------------------------- Footer -------------------------------------------------------------*/
+.loginpage,
 .profile-page,
 .home {
   footer {
@@ -549,6 +556,40 @@ main {
     }
   }
 }
+
+.loginpage{
+  padding: 20px;
+  .login-form{
+    background-color: #fff;
+    margin:0 auto;
+    width:50%;
+    padding:20px;
+    *{
+      font-size: 30px;
+      height:40px;
+      line-height: 40px;
+      color: #414146;
+      text-align: center;
+    }
+    p{
+      background-color: rgba(65, 65, 70, 0.85);
+    }
+
+    input{
+      color: #414146;
+
+      display:block;
+      width:100%;
+      border-width: 0px;
+    }
+    input[type=button]{
+      background-color: #ffd600;
+    }
+
+  }
+
+}
+
 footer {
   .footer-content {
     position: relative;

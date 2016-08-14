@@ -4,7 +4,7 @@
 
 var API_ENDPOINT = location.host == 'www.eworkers.space'
     ? "http://www.eworkers.space:8080/api/"
-    : "http://localhost/eworkers/web/app_dev.php/api/";
+    : "http://www.eworkers.space:8080/api/";
 
 var API_POST_LOGIN = API_ENDPOINT + "login";
 var API_GET_WORKERS = API_ENDPOINT + "workers";
@@ -17,13 +17,24 @@ var PAGE = {
     DETAIL_PAGE:"/"
 };
 
-
-
 var TagType = {
     TECH:   "technology",
     LANG:   "language",
     CASTE:  "caste",
     ACHIV:    "achievement"
+};
+
+var UserFields = {
+    birthday:"Birthday",
+    startWorking:"Started Working",
+    address:"From",
+    skype:"Skype",
+    homeEmail:"Home Email",
+    workingEmail:"Working Email",
+    phoneNumber:"Phone",
+    closePersonPhoneNumber:"Close person phone number",
+    whereIsSitting:"Where is sitting",
+    loginToComputer:"Credentials to PC"
 };
 
 var Tag = function(data) {
@@ -49,8 +60,6 @@ var Worker = function(data) {
     this.id = ko.observable(data.id);
     this.name = ko.observable(data.name);
     this.title = ko.observable(data.title);
-    this.images = ko.observableArray(null);
-    this.ava = ko.observable(null);
     this.birthday = ko.observable(data.birthday);
     this.phoneNumber = ko.observable(data.phoneNumber);
     this.closePersonPhoneNumber = ko.observable(data.closePersonPhoneNumber);
@@ -62,6 +71,12 @@ var Worker = function(data) {
     this.loginToComputer = ko.observable(data.loginToComputer);
     this.whereIsSitting = ko.observable(data.whereIsSitting);
     this.workingEmail = ko.observable(data.workingEmail);
+    this.caste = ko.observable(null);
+    this.languages = ko.observableArray([]);
+    this.achievements = ko.observableArray([]);
+    this.images = ko.observableArray(null);
+    this.ava = ko.observable(null);
+
     if(data.images && data.images.length > 0){
         this.images($.map(data.images, function(image) {
             var anImage = new Image(image);
@@ -73,9 +88,6 @@ var Worker = function(data) {
         }));
     }
 
-    this.caste = ko.observable("");
-    this.languages = ko.observableArray([]);
-    this.achievements = ko.observableArray([]);
 
     this.tags = ko.observableArray($.map(data.tags, function(tag) {
         var aTag = new Tag(tag);
@@ -87,6 +99,19 @@ var Worker = function(data) {
 
         return aTag;
     }));
+
+    this.getFormattedFields = function(){
+        var array = [];
+        for(var key in UserFields){
+            if(this[key] && this[key]() != null){
+                array.push({
+                    name:UserFields[key],
+                    value:this[key]()
+                });
+            }
+        }
+        return array;
+    };
 };
 
 function getParameterByName(name, url) {

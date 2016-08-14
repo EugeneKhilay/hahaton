@@ -11,7 +11,7 @@ var loginPageModel = function MyViewModel() {
     self.doLogin = function(){
         self.message("");
         if(self.username().trim().length == 0){
-            self.message("Email is empty");
+            self.message("Username is empty");
             return;
         };
         if(self.password().trim().length == 0){

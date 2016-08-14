@@ -61,7 +61,9 @@ var finderModel = function MyViewModel() {
         return lw.name().toUpperCase() == rw.name().toUpperCase() ? 0 : (lw.name().toUpperCase() < rw.name().toUpperCase() ? -1 : 1);
     }
     function sortByBirthday(lw, rw) {
-        return lw.birthday().toUpperCase() == rw.birthday().toUpperCase() ? 0 : (lw.birthday().toUpperCase() < rw.birthday().toUpperCase() ? -1 : 1);
+        return (lw.birthday() && rw.birthday())
+            ? ((lw.birthday().toUpperCase() == rw.birthday().toUpperCase()) ? 0 : (lw.birthday().toUpperCase() < rw.birthday().toUpperCase() ? -1 : 1))
+            : 0;
     }
 
     function sortByCaste(lw, rw) {

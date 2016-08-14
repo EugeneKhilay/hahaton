@@ -50,65 +50,23 @@
                                 Hello, I'm
                                 <span class="title-yellow" data-bind="text:name"></span>
                                 <br />
-                                <span class="info-title" data-bind="text:caste().length>0 ? caste()[0].name : ''"></span> and
+                                <span class="info-title" data-bind="text:caste"></span> and
                                 <span class="info-title" data-bind="text:title"></span>
                             </h2>
 
                             <table class="trololo">
-                                <tr>
-                                    <th>Birthday</th>
-                                    <td data-bind="text:birthday"></td>
-                                </tr>
-                                <tr>
-                                    <th>Startday</th>
-                                    <td data-bind="text:startWorking"></td>
-                                </tr>
-                                <tr>
-                                    <th>From</th>
-                                    <td>Cherkassy</td>
-                                </tr>
-                                <tr>
+                                <thead>
                                     <th>Languages</th>
                                     <td data-bind="if  languages().length > 0, foreach: languages">
-                                        <bold data-bind="text:name"></bold><span> / </span>
+                                        <bold data-bind="text:name"></bold><span class="comma">,</span>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <th>Tel</th>
-                                    <td><a data-bind="text:phoneNumber, attr:{href:'tel:' + phoneNumber()}"></a></td>
-                                </tr>
-                                <tr>
-                                    <th>Skype</th>
-                                    <td data-bind="text:skype"></td>
-                                </tr>
-                                <tr>
-                                    <th>Working Email</th>
-                                    <td><a data-bind="text:workingEmail,attr:{href:'mailto:' + workingEmail()}"></a></td>
-                                </tr>
-                                <tr>
-                                    <th>&nbsp;</th>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>Close Person Tel</th>
-                                    <td><a data-bind="text:closePersonPhoneNumber, attr:{href:'tel:' + closePersonPhoneNumber()}"></a></td>
-                                </tr>
-                                <tr>
-                                    <th>Address</th>
-                                    <td data-bind="text:address"></td>
-                                </tr>
-                                <tr>
-                                    <th>Credentials</th>
-                                    <td data-bind="text:loginToComputer"></td>
-                                </tr>
-                                <tr>
-                                    <th>Where is Sitting</th>
-                                    <td data-bind="text:whereIsSitting"></td>
-                                </tr>
-                                <tr>
-                                    <th>Home Email</th>
-                                    <td><a data-bind="text:homeEmail, attr:{href:'mailto:' + homeEmail()}"></a></td>
-                                </tr>
+                                </thead>
+                                <tbody data-bind="foreach:getFormattedFields()">
+                                    <tr>
+                                        <th data-bind="text:name"></th>
+                                        <td data-bind="text:value"></td>
+                                    </tr>
+                                </tbody>
 
                             </table>
                         </div>
