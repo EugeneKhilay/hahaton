@@ -31,11 +31,11 @@
                     <span class="caste-title" data-bind="text:caste"></span>
                     <a href="/" class="back-linkl">Back</a>
                     <ul class="social-btns">
-                        <li class="list-item">
-                            <a href="/" class="facebook-link item-link"></a>
+                        <li class="list-item" data-bind="visible:facebook()">
+                            <a target="_blank" data-bind="attr:{href:facebook}" class="facebook-link item-link"></a>
                         </li>
-                        <li class="list-item">
-                            <a href="/" class="linkedin-link item-link"></a>
+                        <li class="list-item" data-bind="visible:linkedIn()">
+                            <a target="_blank" data-bind="attr:{href:linkedIn}" class="linkedin-link item-link"></a>
                         </li>
                     </ul>
                 </div>
@@ -44,8 +44,8 @@
         <main>
             <div class="container">
                 <div class="profile-content">
-                    <section class="main-info">
-                        <div class="info-about" data-bind="with: worker">
+                    <section class="main-info" data-bind="with: worker">
+                        <div class="info-about">
                             <h2 class="info-title">
                                 Hello, I'm
                                 <span class="title-yellow" data-bind="text:name"></span>
@@ -55,7 +55,7 @@
                             </h2>
 
                             <table class="trololo">
-                                <thead>
+                                <thead data-bind="visible:languages().length > 0">
                                     <th>Languages</th>
                                     <td data-bind="if  languages().length > 0, foreach: languages">
                                         <bold data-bind="text:name"></bold><span class="comma">,</span>
@@ -71,15 +71,19 @@
                             </table>
                         </div>
 
+                        <div class="info-folio">
+                            <!-- ko if: images().length > 0 -->
+                                <div class="folio-slider" data-bind="foreach: images">
+                                    <div><img data-bind="attr:{src:src}" /></div>
+                                </div>
+                            <!-- /ko -->​
+                        </div>
 
-                            <div class="info-folio" data-bind="with: worker">
-                                <!-- ko if: images().length > 0 -->
-                                    <div class="folio-slider" data-bind="foreach: images">
-                                        <div><img data-bind="attr:{src:src}" /></div>
-                                    </div>
-                                <!-- /ko -->​
-                            </div>
+                        <div class="clearfix"></div>
 
+                        <div class="tags" data-bind="foreach: tech">
+                            <span class="tag" data-bind="text:name;"></span>
+                        </div>
 
                     </section>
                     <section class="secondary-info">

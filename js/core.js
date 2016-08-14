@@ -25,6 +25,7 @@ var TagType = {
 };
 
 var UserFields = {
+    sex:"Sex",
     birthday:"Birthday",
     startWorking:"Started Working",
     address:"From",
@@ -57,6 +58,7 @@ var Image = function(data) {
 
 var Worker = function(data) {
     var that = this;
+    this.sex = ko.observable(data.sex);
     this.id = ko.observable(data.id);
     this.name = ko.observable(data.name);
     this.title = ko.observable(data.title);
@@ -71,9 +73,12 @@ var Worker = function(data) {
     this.loginToComputer = ko.observable(data.loginToComputer);
     this.whereIsSitting = ko.observable(data.whereIsSitting);
     this.workingEmail = ko.observable(data.workingEmail);
+    this.facebook = ko.observable(data.facebook);
+    this.linkedIn = ko.observable(data.linkedIn);
     this.caste = ko.observable(null);
     this.languages = ko.observableArray([]);
     this.achievements = ko.observableArray([]);
+    this.tech = ko.observableArray([]);
     this.images = ko.observableArray(null);
     this.ava = ko.observable(null);
 
@@ -95,6 +100,7 @@ var Worker = function(data) {
             case TagType.ACHIV : that.achievements().push(aTag); break;
             case TagType.CASTE : that.caste(aTag.name()); break;
             case TagType.LANG : that.languages().push(aTag); break;
+            case TagType.TECH : that.tech().push(aTag); break;
         }
 
         return aTag;
