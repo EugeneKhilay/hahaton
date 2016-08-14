@@ -67,6 +67,9 @@ var finderModel = function MyViewModel() {
     }
 
     function sortByCaste(lw, rw) {
+        if(lw.caste() == null || rw.caste() == null){
+            return 0;
+        }
         if(lw.caste().length > rw.caste().length){
             return -1
         }
