@@ -27,6 +27,11 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
+
+html{
+  height:100%;
+}
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
@@ -99,6 +104,7 @@ table {
 body {
   background: url('../images/backgr.jpg') center top no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 .container {
   margin: 0 auto;
@@ -124,7 +130,8 @@ body {
 header {
   .header-logo {
     position: relative;
-    margin: 70px 0 20px;
+    margin: 70px 0 0px;
+    height: 175px;
     text-align: center;
     background-color: rgba(65, 65, 70, 0.85);
     &.profile-header {
@@ -259,14 +266,20 @@ header {
   }
 }
 main {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
+
+  height: 100%;
   .container {
-    padding: 70px 100px;
+    padding: 110px 100px;
     background-color: #fff;
+    height: 100%;
+    .loginpage &{
+      background-color: rgba(82, 82, 82, 0.7);
+    }
   }
   .filter-wrapper {
     position: relative;
-    margin-bottom: 130px;
+    margin-bottom: 110px;
   }
   .select2-container {
     .select2-selection {
@@ -358,7 +371,7 @@ main {
     }
     .img-wrapper {
       margin-bottom: 5px;
-      max-height: 170px;
+      max-height: 190px;
       overflow: hidden;
       &:hover img {
         -moz-transform: scale(1.1);
@@ -562,7 +575,7 @@ main {
   footer {
     .container {
       margin-bottom: 65px;
-      padding: 0 45px;
+      padding: 15px 45px;
       background-color: #414146;
       border-bottom: 20px solid #ffd600;
     }
@@ -570,32 +583,57 @@ main {
 }
 
 .loginpage{
+  height: 50%;
   padding: 20px;
   .login-form{
-    background-color: #fff;
-    margin:0 auto;
+    position: relative;
+    width:40%;
+    margin:41px auto;
     *{
-      font-size: 30px;
-      height:45px;
+      font-size: 18px;
+      height: 41px;
       line-height: 45px;
-      color: #414146;
+      color: #ffffff;
       text-align: center;
     }
     p{
-      background-color: rgba(65, 65, 70, 0.85);
+      position: absolute;
+      bottom: 100%;
+      left:0px;
+      right: 0px;
+      font-family: 'OpenSans', sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+      background-color: rgb(255, 78, 14);
     }
 
     input{
+      box-sizing: border-box;
+      font-size: 16px;
       color: #414146;
       display:block;
       width:100%;
       border-width: 0px;
       &.bottom-border{
-        border-bottom: 1px solid #414146;
+        border-bottom: 0px solid #414146;
+      }
+      &[type=text]{
+        border: 1px solid #e4e4e4;
+      }
+      &[type=password]{
+        border: 1px solid #e4e4e4;
+        border-top: 0px solid #e4e4e4;
+      }
+      &:focus{
+        outline: 0;
       }
     }
     input[type=button]{
       background-color: #ffd600;
+      margin-top: 5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 16px;
     }
 
   }
