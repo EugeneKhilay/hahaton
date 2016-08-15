@@ -134,6 +134,12 @@ function setApiKey(apiKey){
     console.log("save " + apiKey);
     localStorage.setItem("X-API-Key",apiKey);
 }
+
+function logout(){
+    setApiKey(null);
+    openPage(PAGE.LOGIN);
+}
+
 function getApiKey(){
     var apiKey = localStorage.getItem("X-API-Key");
     console.log("read " + apiKey);

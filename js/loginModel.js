@@ -38,6 +38,13 @@ var loginPageModel = function MyViewModel() {
 
 };
 
+
 $(function(){
-    ko.applyBindings(loginPageModel);
+    var loginModel = new loginPageModel();
+    ko.applyBindings(loginModel);
+
+    $('input').keyup(function (e) {
+        (e.which == 13) && loginModel.doLogin();
+    });
+
 });
