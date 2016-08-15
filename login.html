@@ -26,14 +26,14 @@
             </div>
         </header>
         <main>
-
-            <div class="login-form">
-                <p data-bind="visible:message().length > 0, text:message"></p>
-                <input class="bottom-border" data-bind="value:username" type="text" placeholder="redmine username"/>
-                <input data-bind="value:password" id="password" placeholder="password" type="password"/>
-                <input data-bind="click:doLogin" type="button" value="sign in"/>
+            <div class="container">
+                <div class="login-form">
+                    <p data-bind="visible:message().length > 0, text:message"></p>
+                    <input class="bottom-border" data-bind="value:username" type="text" placeholder="redmine username"/>
+                    <input data-bind="value:password" id="password" placeholder="password" type="password"/>
+                    <input data-bind="click:doLogin" type="button" value="sign in"/>
+                </div>
             </div>
-
         </main>
         <footer>
             <div class="container">
