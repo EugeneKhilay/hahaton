@@ -10,6 +10,7 @@ var API_POST_LOGIN = API_ENDPOINT + "login";
 var API_GET_WORKERS = API_ENDPOINT + "workers";
 var API_GET_WORKER = API_ENDPOINT + "worker/";
 var API_GET_TAGS = API_ENDPOINT + "tags";
+var DEFAULT_AVATAR_URI = "images/ava.png";
 
 var PAGE = {
     HOME:"index.html",
@@ -80,7 +81,7 @@ var Worker = function(data) {
     this.achievements = ko.observableArray([]);
     this.tech = ko.observableArray([]);
     this.images = ko.observableArray(null);
-    this.ava = ko.observable(null);
+    this.ava = ko.observable(DEFAULT_AVATAR_URI);
 
     if(data.images && data.images.length > 0){
         this.images($.map(data.images, function(image) {
