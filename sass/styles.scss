@@ -129,6 +129,7 @@ body {
 }
 header {
   .header-logo {
+    z-index: -1;
     position: relative;
     margin: 70px 0 0px;
     height: 175px;
@@ -164,6 +165,7 @@ header {
     background-color: #ffd600;
   }
   .caste-title {
+    min-height: 28px;
     display: block;
     padding: 0 0 12px 220px;
     color: #414146;
@@ -279,7 +281,7 @@ main {
   }
   .filter-wrapper {
     position: relative;
-    margin-bottom: 110px;
+    margin-bottom: 105px;
   }
   .select2-container {
     .select2-selection {
@@ -288,7 +290,7 @@ main {
       background-color: #eaeaea;
       .select2-selection__rendered {
         padding: 10px 0 10px 50px;
-        background: url('../images/search.png') 15px 15px no-repeat;
+        background: url('../images/search.png') 15px 13px no-repeat;
       }
     }
   }
@@ -304,18 +306,18 @@ main {
       width: 100%;
     }
     .select2-selection {
-      height: 50px;
+      height: 46px;
       text-align: center;
       background-color: #414146;
       &:focus {
         outline: none;
       }
       .select2-selection__rendered {
-        padding: 10px 0;
+        padding: 9px 0;
         color: #fff;
-        font: 30px / 36px 'BebasNeueBold', 'OpenSans', sans-serif;
+        /* font: 31px / 36px 'BebasNeueBold', 'OpenSans', sans-serif; */
         font-size: 30px;
-        line-height: 36px;
+        line-height: 32px;
         text-transform: uppercase;
         background: none;
       }
@@ -711,6 +713,15 @@ ul#menu{
   right: 10px;
   text-align: right;
   li a{
-    color:#fff;
+    padding: 2px 5px;
+    margin-bottom: 5px;
+    color: #414146;
+    background: #ffd500;
   }
+  li{
+        margin-bottom: 8px;
+  }
+}
+span.select2-container--default{
+  /* width: 70% !important; */
 }
