@@ -26,7 +26,6 @@ var TagType = {
 };
 
 var UserFields = {
-    sex:"Sex",
     birthday:"Birthday",
     startWorking:"Started Working",
     address:"From",
