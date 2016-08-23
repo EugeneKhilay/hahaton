@@ -13,7 +13,6 @@ var finderModel = function MyViewModel() {
     self.init = function(){
 
         getSecureRequest(API_GET_TAGS,function(data){
-
             var groupedTags = {};
             self.allTags($.map(data.tags, function(tag) {
                 if(groupedTags[tag.tagType]) {
@@ -24,20 +23,33 @@ var finderModel = function MyViewModel() {
                 return new Tag(tag);
             }));
 
-            var dataForTags = [];
-            for(var key in groupedTags){
+            getSecureRequest(API_GET_WORKERS,function(data){
+
+                groupedTags[TagType.EWORKER] = [];
+                self.allWorkers($.map(data.workers, function(worker) {
+                    var eWorker = new Worker(worker);
+                    var nameTag = {
+                        id:TagType.EWORKER+eWorker.id(),
+                        type:TagType.EWORKER,
+                        name: eWorker.name() + "(skype:" + eWorker.skype() + ")"
+                    };
+                    groupedTags[TagType.EWORKER].push(nameTag);
+
+                    eWorker.tags().push(new Tag(nameTag))
+
+                    return eWorker;
+                }));
+
+                var dataForTags = [];
+                for(var key in groupedTags){
                     dataForTags.push({
                         id:key,
                         text:key,
                         children:$.map(groupedTags[key], function(tag){return {id:tag.id,text:tag.name};})
                     });
+                }
 
-            }
-            $('.tags-select').select2({data: dataForTags});
-
-            getSecureRequest(API_GET_WORKERS,function(data){
-                console.log(data.workers)
-                self.allWorkers($.map(data.workers, function(worker) {return new Worker(worker);}));
+                $('.tags-select').select2({data: dataForTags});
                 self.runFilter();
                 $("#loading").fadeOut();
             });
@@ -65,7 +77,6 @@ var finderModel = function MyViewModel() {
             ? ((lw.birthday().toUpperCase() == rw.birthday().toUpperCase()) ? 0 : (lw.birthday().toUpperCase() < rw.birthday().toUpperCase() ? -1 : 1))
             : 0;
     }
-
     function sortByCaste(lw, rw) {
         if(lw.caste() == null || rw.caste() == null){
             return 0;

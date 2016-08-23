@@ -22,7 +22,8 @@ var TagType = {
     TECH:   "technology",
     LANG:   "language",
     CASTE:  "caste",
-    ACHIV:    "achievement"
+    ACHIV:    "achievement",
+    EWORKER:    "eWorker" // generic tag, created on client side
 };
 
 var UserFields = {
