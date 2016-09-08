@@ -141,8 +141,8 @@ function setApiKey(apiKey){
 function myAccount(){
     $("#loading").show();
     getSecureRequest(API_AUTOLOGIN_TOKEN,function(data){
-        //openPage("http://www.eworkers.space:8080/autologin-and-edit/" + data.token);
-        openPage("http://eworkers.paul.ekreative.com/app_dev.php/autologin-and-edit/" + data.token);
+        openPage("http://www.eworkers.space:8080/autologin-and-edit/" + data.token);
+        //openPage("http://eworkers.paul.ekreative.com/app_dev.php/autologin-and-edit/" + data.token);
     });
 }
 
