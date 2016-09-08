@@ -4,12 +4,14 @@
 
 var API_ENDPOINT = location.host == 'www.eworkers.space'
     ? "http://www.eworkers.space:8080/api/"
-    : "http://www.eworkers.space:8080/api/";
+    : "http://eworkers.paul.ekreative.com/app_dev.php/api/";
 
 var API_POST_LOGIN = API_ENDPOINT + "login";
 var API_GET_WORKERS = API_ENDPOINT + "workers";
 var API_GET_WORKER = API_ENDPOINT + "worker/";
 var API_GET_TAGS = API_ENDPOINT + "tags";
+var API_AUTOLOGIN_TOKEN = API_ENDPOINT + "get-autologin-token";
+
 var DEFAULT_AVATAR_URI = "images/ava.png";
 
 var PAGE = {
@@ -136,6 +138,14 @@ function setApiKey(apiKey){
     localStorage.setItem("X-API-Key",apiKey);
 }
 
+function myAccount(){
+    $("#loading").show();
+    getSecureRequest(API_AUTOLOGIN_TOKEN,function(data){
+        //openPage("http://www.eworkers.space:8080/autologin-and-edit/" + data.token);
+        openPage("http://eworkers.paul.ekreative.com/app_dev.php/autologin-and-edit/" + data.token);
+    });
+}
+
 function logout(){
     setApiKey(null);
     openPage(PAGE.LOGIN);
@@ -165,7 +175,7 @@ function getSecureRequest(url,callback){
         url:url,
         headers:{'X-API-Key':apiKey},
         type: "GET",
-        cache: false,
+
         success: function(data, textStatus, xhr) {
             console.log(xhr.status);
             callback(data);
